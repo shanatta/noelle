@@ -195,18 +195,102 @@
         <section id = "services" class = "py-4">
             <div class = "container">
                 <div class = "title-wrap">
-                    <span class = "sm-title">know about services that we offer</span>
-                    <h2 class = "lg-title">Our services</h2>
+                    <span class = "sm-title">a little space to share your thoughts</span>
+                    <!--<h2 class = "lg-title">Our services</h2>-->
                 </div>
 
                 <div class = "services-row">
                     <div class = "services-item">
                         <span class = "services-icon">
-                            <i class = "fas fa-map-marked-alt"></i>
+                            <i class="far fa-envelope"></i>
                         </span>
-                        <h3>Trave Guide</h3>
+                        <h3>Anonym Letters</h3>
                         <p class = "text">Hii, you did great this year fr! If there's something little rant, your wishlist, your hopes for next year, or just random thoughts you kept to urself. You can drop it here > <</p>
-                        <a href = "#" class = "btn">Read more</a>
+                        <div id="wall" class="space-y-4 mb-6">
+                            <form id="msgForm">
+                              <input type="text" id="nick" placeholder="Nickname (optional)" class="border p-2 rounded w-full mb-2">
+                              <textarea id="msg" placeholder="Your message..." class="border p-2 rounded w-full mb-2" required></textarea>
+                              <button type="submit" class="bg-black text-white px-4 py-2 rounded">Send</button>
+                            </form>
+                          </div>
+                          
+                          <script type="module">
+                            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+                            import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+                          
+                            // Config Firebase
+                            const firebaseConfig = {
+                              apiKey: "AIzaSyA3-LSOtMaB9GjOjYVHwIMRY0_yFy1oLY8",
+                              authDomain: "noelleliebe.firebaseapp.com",
+                              projectId: "noelleliebe",
+                              storageBucket: "noelleliebe.firebasestorage.app",
+                              messagingSenderId: "1036040325787",
+                              appId: "1:1036040325787:web:03ab4366bef27bd607d43e"
+                            };
+                          
+                            const app = initializeApp(firebaseConfig);
+                            const db = getFirestore(app);
+                            const colRef = collection(db, "messages");
+                          
+                            if (!localStorage.getItem("anon_id")) {
+                              localStorage.setItem("anon_id", crypto.randomUUID());
+                            }
+                            const anonId = localStorage.getItem("anon_id");
+                          
+                            const form = document.getElementById("msgForm");
+                            form.addEventListener("submit", async (e) => {
+                              e.preventDefault();
+                              const nick = document.getElementById("nick").value || "Anonymous";
+                              const msg = document.getElementById("msg").value.trim();
+                              if (!msg) return;
+                              await addDoc(colRef, { nick, msg, time: Date.now(), sender: anonId });
+                              form.reset();
+                            });
+                          
+                            // Container pesan = test-row di testimonials
+                            const messagesDiv = document.querySelector("#testimonials .test-row");
+                          
+                            const q = query(colRef, orderBy("time", "desc"));
+                            onSnapshot(q, (snapshot) => {
+                              messagesDiv.innerHTML = ""; // reset container
+                              snapshot.forEach((docSnap) => {
+                                const d = docSnap.data();
+                                const div = document.createElement("div");
+                                div.className = "test-item relative"; // style testimonial
+                          
+                                const canDelete = d.sender === anonId;
+                                div.innerHTML = `
+                                  <p class="text">${d.msg}</p>
+                                  <div class="test-item-info">
+                                    <img src="images/default-avatar.jpeg" alt="anon" />
+                                    <div>
+                                      <h3>${d.nick}</h3>
+                                      <p class="text">${new Date(d.time).toLocaleString("en-GB", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false
+}).replace(",", "")}</p>
+                                    </div>
+                                  </div>
+                                  ${canDelete ? `<button data-id="${docSnap.id}" class="delete bg-red-500 text-white px-2 py-1 rounded text-sm absolute right-2 top-2">x</button>` : ""}
+                                `;
+                          
+                                messagesDiv.appendChild(div);
+                              });
+                          
+                              document.querySelectorAll(".delete").forEach((btn) => {
+                                btn.addEventListener("click", async () => {
+                                  const id = btn.getAttribute("data-id");
+                                  await deleteDoc(doc(db, "messages", id));
+                                });
+                              });
+                            });
+                          </script>
+                          
+                        <a href = "#" class = "btn">Send Letters</a>
                     </div>
                 </div>
             </div>
@@ -217,7 +301,7 @@
         <section id = "testimonials" class = "py-4">
             <div class = "container">
                 <div class = "title-wrap">
-                    <span class = "sm-title">what our clients say about us</span>
+                    <span class = "sm-title">wall of letters</span>
                     <h2 class = "lg-title">testimonials</h2>
                 </div>
 
@@ -277,7 +361,7 @@
             <div class = "container footer-row">
                 <div class = "footer-item">
                     <a href = "index.html" class = "site-brand">
-                        Trip<span>Boss</span>
+                        Noelle<span>Liebe</span>
                     </a>
                     <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptates maiores nam vitae iusto. Placeat rem sint voluptas natus exercitationem autem quod neque, odit laudantium reiciendis ipsa suscipit veritatis voluptate.</p>
                 </div>
