@@ -438,15 +438,12 @@
                         }
                       });
                   
-                      // baru aktifin event click setelah SDK siap
-                      const subBtn = document.getElementById("subscribeBtn");
-                      if (subBtn) {
-                        subBtn.addEventListener("click", function() {
-                          OneSignal.registerForPushNotifications({modalPrompt: true});
-                        });
-                      }
-                    });
-                  </script>                  
+                      document.getElementById("subscribeBtn").addEventListener("click", function () {
+    OneSignal.push(function() {
+      OneSignal.registerForPushNotifications({ modalPrompt: true });
+    });
+  });
+</script>               
         </footer>
         <!-- end of footer -->
 
