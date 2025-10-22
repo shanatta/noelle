@@ -425,25 +425,19 @@
                     <button id="subscribeBtn" class="btn">Subscribe</button>
                   </div>
                   
-                  <!-- OneSignal SDK -->
-                  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-                  
                   <script>
-                    window.OneSignal = window.OneSignal || [];
-                    OneSignal.push(function() {
-                      OneSignal.init({
-                        appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597", // ganti sama App ID kamu
-                        notifyButton: {
-                          enable: true
-                        }
-                      });
-                  
-                      document.getElementById("subscribeBtn").addEventListener("click", function () {
-    OneSignal.push(function() {
-      OneSignal.registerForPushNotifications({ modalPrompt: true });
-    });
-  });
-</script>               
+                    document.addEventListener("DOMContentLoaded", function() {
+                      const btn = document.getElementById("subscribeBtn");
+                      if (btn) {
+                        btn.addEventListener("click", function () {
+                          OneSignal.push(function() {
+                            OneSignal.showSlidedownPrompt();
+                          });
+                        });
+                      }
+                    });
+                    </script>
+                    
         </footer>
         <!-- end of footer -->
 
