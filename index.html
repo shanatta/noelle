@@ -16,15 +16,16 @@
         <link rel = "stylesheet" href = "css/utility.css">
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
+        importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
         <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-    });
-  });
-</script>
+        <script>
+          window.OneSignalDeferred = window.OneSignalDeferred || [];
+          OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+              appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+            });
+          });
+        </script>
     </head>
     <body>
         <!-- navbar  -->
@@ -425,28 +426,6 @@
                     <button id="subscribeBtn" class="btn">Subscribe</button>
                   </div>
                   
-                  <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                      const btn = document.getElementById("subscribeBtn");
-                      if (btn) {
-                        btn.addEventListener("click", function () {
-                          OneSignal.push(function() {
-                            OneSignal.showSlidedownPrompt();
-                            OneSignal.on('subscriptionChange', function(isSubscribed) {
-          if (isSubscribed) {
-            OneSignal.sendSelfNotification(
-              "🎄 Welcome to NoelleLiebe!",
-              "You’ll get warm updates from time to time.",
-              '', // link kalau mau kosongin aja
-              {}
-            );
-          }
-        });
-      });
-    });
-  }
-});
-</script>
                     
         </footer>
         <!-- end of footer -->
