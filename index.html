@@ -424,6 +424,19 @@
                     <h2>Subscribe for the Update!</h2>
                     <button id="subscribeBtn" class="btn">Subscribe</button>
                   </div>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                      const btn = document.getElementById("subscribeBtn");
+                      if (btn) {
+                        btn.addEventListener("click", function () {
+                          OneSignal.push(function() {
+                            OneSignal.showSlidedownPrompt();
+                          });
+                        });
+                      }
+                    });
+                    </script>
+                    
                   
                     
         </footer>
