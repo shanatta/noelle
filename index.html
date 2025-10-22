@@ -16,6 +16,15 @@
         <link rel = "stylesheet" href = "css/utility.css">
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+    });
+  });
+</script>
     </head>
     <body>
         <!-- navbar  -->
@@ -370,41 +379,70 @@
                     <a href = "index.html" class = "site-brand">
                         Noelle<span>Liebe</span>
                     </a>
-                    <!--
-                    <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptates maiores nam vitae iusto. Placeat rem sint voluptas natus exercitationem autem quod neque, odit laudantium reiciendis ipsa suscipit veritatis voluptate.</p> -->
+                    
+                    <p class = "text">Shares the beauty of moments</p> 
                 </div>
 
                 <div class = "footer-item">
                     <h2>Follow me on: </h2>
                     <ul class = "social-links">
                         <li>
-                            <a href = "#">
+                            <a href = "https://instagram.com/os4iko">
                                 <i class = "fab fa-instagram"></i>
                             </a>
                         </li>
+
+                        <li>
+                            <a href = "https://youtube.com/channel/UCtAJNvBLdivdaScjzFtf9Zw?sub_confirmation=1">
+                                <i class = "fab fa-youtube"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href = "https://ko-fi.com/shanatta9">
+                                <i class = "fas fa-gift"></i>
+                            </a>
+                        </li>
+
 
         
                     </ul>
                 </div>
 
                 <div class = "footer-item">
-                    <h2>Popular Places:</h2>
+                    <h2>Weekly Trending</h2>
                     <ul>
-                        <li><a href = "#">Thailand</a></li>
-                        <li><a href = "#">Australia</a></li>
-                        <li><a href = "#">Maldives</a></li>
-                        <li><a href = "#">Switzerland</a></li>
-                        <li><a href = "#">Germany</a></li>
+                        <li><a href = "https://imdb.com/title/tt5133572/">Crown For Christmas</a></li>
+                        <li><a href = "https://spirithalloween.com/content.jsp?pageName=spiritchristmas">Spirit Christmas Locations</a></li>
+                        <li><a href = "https://goodhousekeeping.com/uk/food/a69091039/costa-christmas-drinks-menu/">Costa Christmas Menu 2025</a></li>
+                        <li><a href = "https://festive.co.uk/catalogues/">Festive Christmas Shop</a></li>
+                        <li><a href = "https://amazon.com/harry-potter-christmas-village/s?k=harry+potter+christmas+village">Harry Potter Christmas Village</a></li>
                     </ul>
                 </div>
 
-                <div class = "subscribe-form footer-item">
-                    <h2>Subscribe for Newsletter!</h2>
-                    <form class = "flex">
-                        <input type = "email" placeholder="Enter Email" class = "form-control">
-                        <input type = "submit" class = "btn" value = "Subscribe">
-                    </form>
-                </div>
+                <div class="subscribe-form footer-item">
+                    <h2>Subscribe for the Update!</h2>
+                    <button id="subscribeBtn" class="btn">Subscribe</button>
+                  </div>
+                  
+                  <!-- OneSignal Script -->
+                  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+                  <script>
+                    window.OneSignal = window.OneSignal || [];
+                    OneSignal.push(function () {
+                      OneSignal.init({
+                        appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597", // ganti pakai app ID kamu
+                      });
+                    });
+                  
+                    document.getElementById("subscribeBtn").addEventListener("click", function () {
+  OneSignal.push(function() {
+    OneSignal.registerForPushNotifications({modalPrompt: true});
+  });
+});
+
+                  </script>
+                  
             </div>
         </footer>
         <!-- end of footer -->
