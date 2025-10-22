@@ -432,11 +432,21 @@
                         btn.addEventListener("click", function () {
                           OneSignal.push(function() {
                             OneSignal.showSlidedownPrompt();
-                          });
-                        });
-                      }
-                    });
-                    </script>
+                            OneSignal.on('subscriptionChange', function(isSubscribed) {
+          if (isSubscribed) {
+            OneSignal.sendSelfNotification(
+              "🎄 Welcome to NoelleLiebe!",
+              "You’ll get warm updates from time to time.",
+              '', // link kalau mau kosongin aja
+              {}
+            );
+          }
+        });
+      });
+    });
+  }
+});
+</script>
                     
         </footer>
         <!-- end of footer -->
