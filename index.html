@@ -425,25 +425,28 @@
                     <button id="subscribeBtn" class="btn">Subscribe</button>
                   </div>
                   
-                  <!-- OneSignal Script -->
-                  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+                  <!-- OneSignal SDK -->
+                  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+                  
                   <script>
                     window.OneSignal = window.OneSignal || [];
-                    OneSignal.push(function () {
+                    OneSignal.push(function() {
                       OneSignal.init({
-                        appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597", // ganti pakai app ID kamu
+                        appId: "YOUR-APP-ID-HERE", // ganti sama App ID kamu
+                        notifyButton: {
+                          enable: true
+                        }
                       });
+                  
+                      // baru aktifin event click setelah SDK siap
+                      const subBtn = document.getElementById("subscribeBtn");
+                      if (subBtn) {
+                        subBtn.addEventListener("click", function() {
+                          OneSignal.registerForPushNotifications({modalPrompt: true});
+                        });
+                      }
                     });
-                  
-                    document.getElementById("subscribeBtn").addEventListener("click", function () {
-  OneSignal.push(function() {
-    OneSignal.registerForPushNotifications({modalPrompt: true});
-  });
-});
-
-                  </script>
-                  
-            </div>
+                  </script>                  
         </footer>
         <!-- end of footer -->
 
