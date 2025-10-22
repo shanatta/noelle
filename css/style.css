@@ -4,6 +4,63 @@
     --dark: #0e1010;
     --trans: all 0.3s ease-in-out;
 }
+#wall {
+    background-color: var(--green);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    background-color: white; /* tetap putih */
+    color: #111; /* teks gelap */
+    transition: var(--trans);
+    background-color: white; /* tetap putih */
+  color: #111; /* teks input jadi gelap, kelihatan saat diketik */
+  }
+  
+  .input-box::placeholder {
+    color: #555; /* placeholder lebih gelap, biar kelihatan */
+  }
+  
+  
+  .input-box:focus {
+    outline: none;
+    border-color: var(--light-grey);
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: white;
+    color: var(--green);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--trans);
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+  
+  .btn:hover {
+    background-color: var(--light-grey);
+  }
 .navbar{
     position: fixed;
     top: 0;
@@ -265,9 +322,9 @@ header{
 
 /* services */
 #services{
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(../images/services-bg.jpg) center/cover no-repeat;
-    background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/services-bg.jpg) center/cover no-repeat;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/services-bg.jpg) center/cover no-repeat;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(../images/letters.png) center/cover no-repeat;
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/letters.png) center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/letters.png) center/cover no-repeat;
 }
 #services *{
     color: #fff;
