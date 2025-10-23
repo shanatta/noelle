@@ -161,7 +161,7 @@
       @media (max-width: 768px) {
         .spotify-container {
           width: 90%; /* hampir full width di HP */
-          padding-top: 56.25%; /* tinggi proporsional di HP */
+          padding-top: 70%; /* tinggi proporsional di HP */
         }
       }
       
