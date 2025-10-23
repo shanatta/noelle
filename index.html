@@ -16,19 +16,50 @@
         <link rel = "stylesheet" href = "css/utility.css">
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+        <!-- OneSignal SDK -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.js" async></script>
+
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
+document.addEventListener("DOMContentLoaded", () => {
+  const OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
       appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-      safari_web_id: "web.onesignal.auto.49d2239d-a04e-422a-89e0-14dbda97fb4d",
-      notifyButton: {
-        enable: true,
-      },
+      allowLocalhostAsSecureOrigin: true,
+      notifyButton: { enable: false } // tombol subscribe mati
+    });
+
+    // Auto prompt 3 detik
+    setTimeout(() => {
+      OneSignal.isPushNotificationsEnabled().then(enabled => {
+        if (!enabled) OneSignal.showSlidedownPrompt();
+      });
+    }, 3000);
+
+    // Trigger welcome notification via REST API setelah subscribe
+    OneSignal.on('subscriptionChange', async function(isSubscribed) {
+      if (isSubscribed) {
+        const userId = await OneSignal.getUserId();
+        fetch('https://onesignal.com/api/v1/notifications', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Authorization': 'os_v2_app_2wqr7ey6vnctbcqxrhvvyhhvs7pidd3x3siufl4ccs7o43hoicjg4fwbgeauac54x6uvhifx6w2ksd5ybgzstztbprui6iwdedmguza'
+          },
+          body: JSON.stringify({
+            app_id: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+            include_external_user_ids: [userId],
+            headings: { "en": "NoelleLiebe" },
+            contents: { "en": "🎄 Welcome to NoelleLiebe! You’ll get warm updates from time to time." },
+            url: "https://noelleliebe.vercel.app"
+          })
+        });
+      }
     });
   });
+});
 </script>
+
 
 
     </head>
