@@ -16,14 +16,21 @@
         <link rel = "stylesheet" href = "css/utility.css">
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" async></script>
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
       appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-      notifyButton: { enable: true },
-      autoRegister: true
+      promptOptions: {
+        /* otomatis munculin native prompt */
+        slidedown: {
+          enabled: true,
+          autoPrompt: true,
+          pageViews: 1,
+          timeDelay: 5
+        }
+      }
     });
   });
 </script>
