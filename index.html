@@ -16,21 +16,51 @@
         <link rel = "stylesheet" href = "css/utility.css">
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+        <!-- Hapus page.js, pakai SDK biasa -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.js" async></script>
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-      notifyButton: { enable: false }, // tombol optional
-      welcomeNotification: {
-        "title": "NoelleLiebe",
-        "message": "🎄 Welcome to NoelleLiebe! You’ll get warm updates from time to time.",
-        "url": "https://noelleliebe.vercel.app"
-      }
+  document.addEventListener("DOMContentLoaded", async () => {
+    const OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+        allowLocalhostAsSecureOrigin: true,
+        notifyButton: { enable: false } // tombol mati
+      });
+
+      // Auto prompt 5 detik
+      setTimeout(() => {
+        OneSignal.isPushNotificationsEnabled().then(function(enabled) {
+          if (!enabled) OneSignal.showSlidedownPrompt();
+        });
+      }, 5000);
+
+      // Trigger welcome notification via REST API
+      OneSignal.on('subscriptionChange', function(isSubscribed) {
+        if (isSubscribed) {
+          OneSignal.getUserId().then(userId => {
+            fetch('https://onesignal.com/api/v1/notifications', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': 'Basic YOUR_REST_API_KEY'
+              },
+              body: JSON.stringify({
+                app_id: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+                include_external_user_ids: [userId],
+                headings: { "en": "NoelleLiebe" },
+                contents: { "en": "🎄 Welcome to NoelleLiebe! You’ll get warm updates from time to time." },
+                url: "https://noelleliebe.vercel.app"
+              })
+            });
+          });
+        }
+      });
     });
   });
 </script>
+
+
 
 
     </head>
