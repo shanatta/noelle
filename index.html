@@ -428,29 +428,7 @@
                     <button id="subscribeBtn" class="btn">Subscribe</button>
                   </div>
                   
-                  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignal = window.OneSignal || [];
-  
-  // Init OneSignal
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-    });
-  });
-
-  // Tombol klik
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("subscribeBtn");
-    if(btn){
-      btn.addEventListener("click", () => {
-        OneSignal.push(function() {
-          OneSignal.showSlidedownPrompt();
-        });
-      });
-    }
-  });
-</script>
+                  
 
                   
                         
