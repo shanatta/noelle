@@ -22,18 +22,16 @@
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-      promptOptions: {
-        /* otomatis munculin native prompt */
-        slidedown: {
-          enabled: true,
-          autoPrompt: true,
-          pageViews: 1,
-          timeDelay: 5
-        }
+      notifyButton: { enable: false }, // tombol optional
+      welcomeNotification: {
+        "title": "NoelleLiebe",
+        "message": "🎄 Welcome to NoelleLiebe! You’ll get warm updates from time to time.",
+        "url": "https://noelleliebe.vercel.app"
       }
     });
   });
 </script>
+
 
     </head>
     <body>
