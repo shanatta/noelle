@@ -17,14 +17,14 @@
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
     </head>
+    
     <body>
         <!-- navbar  -->
         <nav class = "navbar">
             <div class = "container flex">
-                <a href = "index.html" class = "site-brand">
+                <a href = "#" class = "site-brand" style="pointer-events:none; cursor:default;">
                     Noelle<span>Liebe</span>
                 </a>
-
                 <button type = "button" id = "navbar-show-btn" class = "flex">
                     <i class = "fas fa-bars"></i>
                 </button>
@@ -36,18 +36,23 @@
                         <li class = "nav-item">
                             <a href = "index.html" class = "nav-link">Home</a>
                         </li>
+                        
                         <li class = "nav-item">
                             <a href = "playlist.html" class = "nav-link">Playlist</a>
                         </li>
+                        
                         <li class = "nav-item">
                             <a href = "gallery.html" class = "nav-link">Gallery</a>
                         </li>
+                        
                         <li class = "nav-item">
                             <a href = "blog.html" class = "nav-link">Blog</a>
                         </li>
+                        
                         <li class = "nav-item">
                             <a href = "about.html" class = "nav-link">About</a>
                         </li>
+                        
                         <li class = "nav-item">
                             <a href = "contact.html" class = "nav-link">Contact</a>
                         </li>
@@ -56,7 +61,7 @@
             </div>
         </nav>
         <!-- end of navbar  -->
-
+        
         <!-- header -->
         <header class = "flex header-sm">
             <div class = "container">
@@ -66,155 +71,162 @@
                 </div>
             </div>
         </header>
-        <!-- header -->
-
+        <!-- end of header -->
+        
         <!-- about section -->
         <section id = "about" class = "py-4">
             <div class = "container">
                 <div class = "title-wrap">
-                    <span class = "sm-title">things to know about us</span>
-                    <h2 class = "lg-title">our story</h2>
+                    <span class = "sm-title">Feel the Winter Vibes</span>
+                    <h2 class = "lg-title">About the Playlist</h2>
                 </div>
-
+                
                 <div class="spotify-container">
                     <iframe src="https://open.spotify.com/embed/playlist/2O8zoKEctEkXsAUpoq8TCs?utm_source=generator&theme=0" 
-                            frameborder="0" 
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                  </div>
-                  
-               
-                  
-                  
-
-                <div class = "about-row">
-                    <div class = "about-left my-2">
-                        <img src = "images/about-img.jpg" alt = "about img">
+                    frameborder="0" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <style>
+            .spotify-container {
+                position: absolute;
+                width: 49%;
+                max-width: 644px; /* optional, biar nggak terlalu lebar di PC */
+                margin: auto;
+                padding-top: 30%; /* rasio tinggi untuk playlist, bisa disesuaikan */
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            .spotify-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                border-radius: 12px;
+            }
+            </style>
+            
+            <div class = "about-row">
+                <div class = "about-left my-2">
+                    <!--
+                        <img src = "images/about-img.jpg" alt = "about img"> -->
                     </div>
                     <div class = "about-right">
-                        <h2>15 Years of Experience</h2>
-                        <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae vitae sed aperiam qui repudiandae earum voluptatem. Modi at inventore omnis veniam necessitatibus exercitationem vel nesciunt delectus ex officiis, culpa doloremque odit illo saepe placeat. Delectus consequuntur reprehenderit omnis accusantium officiis!</p>
-                        <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique explicabo blanditiis quidem consequuntur qui quaerat fuga iste tenetur consequatur porro. Aliquam maiores alias doloribus at quisquam quo numquam perferendis. Odit!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end of about section -->
-
-        <!-- facts section -->
-        <section id = "facts" class = "py-4 flex">
-            <div class = "container">
-                <div class = 'title-wrap'>
-                    <span class = "sm-title">know some facts about our agency</span>
-                    <h2 class = "lg-title">fun facts</h2>
-                </div>
-
-                <div class = "facts-row">
-                    <div class = "facts-item">
-                        <span class = "fas fa-camera-retro facts-icon"></span>
-                        <div class = "facts-info">
-                            <strong>1220</strong>
-                            <p class = "text">photos taken</p>
-                        </div>
-                    </div>
-
-                    <div class = "facts-item">
-                        <span class = "fas fa-umbrella-beach  facts-icon"></span>
-                        <div class = "facts-info">
-                            <strong>450</strong>
-                            <p class = "text">beaches visited</p>
-                        </div>
-                    </div>
-
-                    <div class = "facts-item">
-                        <span class = "fas fa-mountain facts-icon"></span>
-                        <div class = "facts-info">
-                            <strong>84</strong>
-                            <p class = "text">mountains climbed</p>
-                        </div>
-                    </div>
-
-                    <div class = "facts-item">
-                        <span class = "fas fa-ship facts-icon"></span>
-                        <div class = "facts-info">
-                            <strong>120</strong>
-                            <p class = "text">cruises organized</p>
+                        <h2>December Playlist</h2>
+                        <p class = "text">Celebrate the magic of the winter season with my special playlist! Immerse yourself in timeless classics and modern hits from legendary artists like Mariah Carey, Wham!, Bing Crosby, Nat King Cole, Frank Sinatra, and John Williams. Whether you're cozying up by the fireplace or enjoying the crisp winter air, these tracks will set the perfect mood. From festive tunes that bring holiday cheer to smooth melodies that warm the soul, every song in this collection is handpicked to make your winter moments unforgettable. Discover your new seasonal favorites and let the music carry you through the frosty wonderland of melodies and memories!</p>
+                        <!--
+                            <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique explicabo blanditiis quidem consequuntur qui quaerat fuga iste tenetur consequatur porro. Aliquam maiores alias doloribus at quisquam quo numquam perferendis. Odit!</p> -->
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- end of facts section -->
-        
-
-        <!-- footer -->
-        <footer class = "py-4">
-            <div class = "container footer-row">
-                <div class = "footer-item">
-                    <a href = "index.html" class = "site-brand">
-                        Trip<span>Boss</span>
-                    </a>
-                    <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptates maiores nam vitae iusto. Placeat rem sint voluptas natus exercitationem autem quod neque, odit laudantium reiciendis ipsa suscipit veritatis voluptate.</p>
-                </div>
-
-                <div class = "footer-item">
-                    <h2>Follow us on: </h2>
-                    <ul class = "social-links">
-                        <li>
-                            <a href = "#">
-                                <i class = "fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href = "#">
-                                <i class = "fab fa-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href = "#">
-                                <i class = "fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href = "#">
-                                <i class = "fab fa-pinterest"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href = "#">
-                                <i class = "fab fa-google-plus"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class = "footer-item">
-                    <h2>Popular Places:</h2>
-                    <ul>
-                        <li><a href = "#">Thailand</a></li>
-                        <li><a href = "#">Australia</a></li>
-                        <li><a href = "#">Maldives</a></li>
-                        <li><a href = "#">Switzerland</a></li>
-                        <li><a href = "#">Germany</a></li>
-                    </ul>
-                </div>
-
-                <div class = "subscribe-form footer-item">
-                    <h2>Subscribe for Newsletter!</h2>
-                    <form class = "flex">
-                        <input type = "email" placeholder="Enter Email" class = "form-control">
-                        <input type = "submit" class = "btn" value = "Subscribe">
-                    </form>
-                </div>
-            </div>
-        </footer>
-        <!-- end of footer -->
-
-        <!-- js -->
-        <script src = "js/script.js"></script>
-        <script>
+            </section>
+            <br> <br> <br> <br> <br> <br> <br>
+            <!-- end of about section -->
             
-        </script>
-    </body>
-</html> 
+            <!-- facts section 
+                <section id = "facts" class = "py-4 flex">
+                    <div class = "container">
+                        <div class = 'title-wrap'>
+                            <span class = "sm-title">know some facts about our agency</span>
+                            <h2 class = "lg-title">fun facts</h2>
+                        </div>
+                        
+                        <div class = "facts-row">
+                            <div class = "facts-item">
+                                <span class = "fas fa-camera-retro facts-icon"></span>
+                                <div class = "facts-info">
+                                    <strong>1220</strong>
+                                    <p class = "text">photos taken</p>
+                                </div>
+                            </div>
+                            
+                            <div class = "facts-item">
+                                <span class = "fas fa-umbrella-beach  facts-icon"></span>
+                                <div class = "facts-info">
+                                    <strong>450</strong>
+                                    <p class = "text">beaches visited</p>
+                                </div>
+                            </div>
+                            
+                            <div class = "facts-item">
+                                <span class = "fas fa-mountain facts-icon"></span>
+                                <div class = "facts-info">
+                                    <strong>84</strong>
+                                    <p class = "text">mountains climbed</p>
+                                </div>
+                            </div>
+                            
+                            <div class = "facts-item">
+                                <span class = "fas fa-ship facts-icon"></span>
+                                <div class = "facts-info">
+                                    <strong>120</strong>
+                                    <p class = "text">cruises organized</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                end of facts section -->
+                
+                <!-- footer -->
+                <footer class = "py-4">
+                    <div class = "container footer-row">
+                        <div class = "footer-item">
+                            <a href = "index.html" class = "site-brand">
+                                Noelle<span>Liebe</span>
+                            </a>
+                            <p class = "text">Shares the beauty of moments</p>
+                        </div>
+                        
+                        <div class = "footer-item">
+                            <h2>Follow me on: </h2>
+                            <ul class = "social-links">
+                                <li>
+                                    <a href = "https://instagram.com/os4iko">
+                                        <i class = "fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href = "https://youtube.com/channel/UCtAJNvBLdivdaScjzFtf9Zw?sub_confirmation=1">
+                                        <i class = "fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href = "https://ko-fi.com/shanatta9">
+                                        <i class = "fas fa-gift"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class = "footer-item">
+                            <h2>Weekly Trending:</h2>
+                            <ul>
+                                <li><a href = "https://imdb.com/title/tt5133572/">Crown For Christmas</a></li>
+                                <li><a href = "https://spirithalloween.com/content.jsp?pageName=spiritchristmas">Spirit Christmas Locations</a></li>
+                                <li><a href = "https://goodhousekeeping.com/uk/food/a69091039/costa-christmas-drinks-menu/">Costa Christmas Menu 2025</a></li>
+                                <li><a href = "https://festive.co.uk/catalogues/">Festive Christmas Shop</a></li>
+                                <li><a href = "https://amazon.com/harry-potter-christmas-village/s?k=harry+potter+christmas+village">Harry Potter Christmas Village</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="subscribe-form footer-item">
+                            <h2>Subscribe for the Update!</h2>
+                            <button id="subscribeBtn" class="btn">Subscribe</button>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end of footer -->
+                
+                <!-- js -->
+                <script src = "js/script.js"></script>
+                <script> </script>
+            </body>
+            </html> 
+            

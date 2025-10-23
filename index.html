@@ -17,478 +17,430 @@
         <link rel = "stylesheet" href = "css/style.css">
         <link rel = "stylesheet" href = "css/responsive.css">
         <!-- OneSignal SDK -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.js" async></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-      allowLocalhostAsSecureOrigin: true,
-      notifyButton: { enable: false } // tombol subscribe mati
-    });
-
-    // Auto prompt 3 detik
-    setTimeout(() => {
-      OneSignal.isPushNotificationsEnabled().then(enabled => {
-        if (!enabled) OneSignal.showSlidedownPrompt();
-      });
-    }, 3000);
-
-    // Trigger welcome notification via REST API setelah subscribe
-    OneSignal.on('subscriptionChange', async function(isSubscribed) {
-      if (isSubscribed) {
-        const userId = await OneSignal.getUserId();
-        fetch('https://onesignal.com/api/v1/notifications', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Authorization': 'os_v2_app_2wqr7ey6vnctbcqxrhvvyhhvs7pidd3x3siufl4ccs7o43hoicjg4fwbgeauac54x6uvhifx6w2ksd5ybgzstztbprui6iwdedmguza'
-          },
-          body: JSON.stringify({
-            app_id: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
-            include_external_user_ids: [userId],
-            headings: { "en": "NoelleLiebe" },
-            contents: { "en": "🎄 Welcome to NoelleLiebe! You’ll get warm updates from time to time." },
-            url: "https://noelleliebe.vercel.app"
-          })
-        });
-      }
-    });
-  });
-});
-</script>
-
-
-
-    </head>
-    <body>
-        <!-- navbar  -->
-        <nav class = "navbar">
-            <div class = "container flex">
-                <a href = "#" class = "site-brand" style="pointer-events:none; cursor:default;">
-                    Noelle<span>Liebe</span>
-                </a>
-
-                <button type = "button" id = "navbar-show-btn" class = "flex">
-                    <i class = "fas fa-bars"></i>
-                </button>
-                <div id = "navbar-collapse">
-                    <button type = "button" id = "navbar-close-btn" class = "flex">
-                        <i class = "fas fa-times"></i>
-                    </button>
-                    <ul class = "navbar-nav">
-                        <li class = "nav-item">
-                            <a href = "index.html" class = "nav-link">Home</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a href = "playlist.html" class = "nav-link">Playlist</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a href = "gallery.html" class = "nav-link">Gallery</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a href = "blog.html" class = "nav-link">Blog</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a href = "about.html" class = "nav-link">About</a>
-                        </li>
-                        <li class = "nav-item">
-                            <a href = "contact.html" class = "nav-link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- end of navbar  -->
-
-        <!-- header -->
-        <header class = "flex">
-            <div class = "container">
-                <div class = "header-title">
-                    <h1>Heart of December</h1>
-                    <p>Have yourself a merry little Christmas ~</p>
-                </div>
-                <div class = "header-form">
-                    <div id="count"></div>
-                    <script>
-                    const count = document.getElementById("count");
-                    
-                    function updateCountdown() {
-                        const now = new Date();
-                        const year = now.getFullYear();
-                        const christmas = new Date(year, 11, 25); // 25 Desember
-                        const end = new Date(year + 1, 0, 5, 23, 59, 59); // 5 Januari (tahun berikutnya)
-                        
-                        // kalau udah di antara 25 Des dan 5 Jan → "It's Christmas time!"
-                        if (now >= christmas && now <= end) {
-                            count.textContent = "It's Christmas time! 🎄";
-                            return;
-                        }
-                        
-                        // kalau udah lewat 5 Jan → hitung ke Natal tahun berikutnya
-                        if (now > end) {
-                            christmas.setFullYear(year + 1);
-                        }
-                        
-                        let diff = christmas - now;
-                        const d = Math.floor(diff / 864e5);
-                        const h = Math.floor(diff / 36e5) % 24;
-                        const m = Math.floor(diff / 6e4) % 60;
-                        const s = Math.floor(diff / 1e3) % 60;
-                        
-                        count.textContent = `${d} days, ${h} hours, ${m} minutes, ${s} seconds till Christmas`;
-                    }
-                    
-                    updateCountdown();
-                    setInterval(updateCountdown, 1000);
-                    </script>
-                </div>
-            </div>
-        </header>
-        <!-- header -->
-
-        <!-- featured section -->
-        <section id = "featured" class = "py-4">
-            <div class = "container">
-                <div class = "title-wrap">
-                    <span class = "sm-title">feel the magic before christmas</span>
-                    <h2 class = "lg-title">holiday favorites</h2>
-                </div>
-
-                <div class = "featured-row">
-                    <div class = "featured-item my-2 shadow" onclick="window.location.href='playlist.html'" style="cursor: pointer;">
-                        <img src = "images/playlist.jpg" alt = "featured place">
-                        <div class = "featured-item-content">
-                            <span>
-                                <i class = "fas fa-headphones"></i>
-                                Playlist
-                            </span>
-                            <div>
-                                <p class = "text">My daily Spotify jams that bring the cozy, chilly Christmas vibes</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "featured-item my-2 shadow">
-                        <img src = "images/movies.jpg" alt = "featured place">
-                        <div class = "featured-item-content">
-                            <span>
-                                <i class="fas fa-film"></i>
-                                Movies
-                            </span>
-                            <div>
-                                <p class = "text">A nostalgic collection of my favorite films and cartoons</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "featured-item my-2 shadow">
-                        <img src = "images/net.jpg" alt = "featured place">
-                        <div class = "featured-item-content">
-                            <span>
-                                <i class = "fas fa-photo-video"></i>
-                                Net Collections
-                            </span>
-                            <div>
-                                <p class = "text">Pretty photos and videos I found online</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "featured-item my-2 shadow">
-                        <img src = "images/scenes.jpg" alt = "featured place">
-                        <div class = "featured-item-content">
-                            <span>
-                                <i class = "fas fa-star"></i>
-                                Scenes
-                            </span>
-                            <div>
-                                <p class = "text">Screenshots of magical movie moments</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "featured-item my-2 shadow">
-                        <img src = "images/captures.jpg" alt = "featured place">
-                        <div class = "featured-item-content">
-                            <span>
-                                <i class = "fas fa-camera-retro"></i>
-                                My Captures
-                            </span>
-                            <div>
-                                <p class = "text">Snaps I took while exploring Christmas stores</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "featured-item my-2 shadow">
-                        <img src = "images/decor.jpg" alt = "featured place">
-                        <div class = "featured-item-content">
-                            <span>
-                                <i class = "fas fa-shopping-cart"></i>
-                                Decor Ideas
-                            </span>
-                            <div>
-                                <p class = "text">Wishlist, inspiration for gifts and festive decor</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end of featured section -->
-
-        <!-- services section -->
-        <section id = "services" class = "py-4">
-            <div class = "container">
-                <div class = "title-wrap">
-                    <span class = "sm-title">a little space to share your thoughts</span>
-                    <!--<h2 class = "lg-title">Our services</h2>-->
-                </div>
-
-                <div class = "services-row">
-                    <div class = "services-item">
-                        <span class = "services-icon">
-                            <i class="far fa-envelope"></i>
-                        </span>
-                        <h3>Anonym Letters</h3>
-                        <p class = "text">Hii, you did great this year fr! If there's something little rant, your wishlist, your hopes for next year, or just random thoughts you kept to urself. You can drop it here > <</p>
-                        <div id="wall" class="space-y-4 mb-6">
-                            <form id="msgForm">
-                              <label for="nick" class="label">Nickname (optional)</label>
-                              <input type="text" id="nick" placeholder="Nickname" class="input-box" style="color:#111; background-color:white;">
-                          
-                              <label for="msg" class="label">Message</label>
-                              <textarea id="msg" placeholder="Your message..." class="input-box" required style="color:#111; background-color:white;"></textarea>
-                          
-                              <button type="submit" class="btn" style="color: #531616; background-color: white;">Send Letters</button>
-
-                            </form>
-                          </div>
-                          
-                          
-                          <script type="module">
-                            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-                            import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-                          
-                            // Config Firebase
-                            const firebaseConfig = {
-                              apiKey: "AIzaSyA3-LSOtMaB9GjOjYVHwIMRY0_yFy1oLY8",
-                              authDomain: "noelleliebe.firebaseapp.com",
-                              projectId: "noelleliebe",
-                              storageBucket: "noelleliebe.firebasestorage.app",
-                              messagingSenderId: "1036040325787",
-                              appId: "1:1036040325787:web:03ab4366bef27bd607d43e"
-                            };
-                          
-                            const app = initializeApp(firebaseConfig);
-                            const db = getFirestore(app);
-                            const colRef = collection(db, "messages");
-                          
-                            if (!localStorage.getItem("anon_id")) {
-                              localStorage.setItem("anon_id", crypto.randomUUID());
-                            }
-                            const anonId = localStorage.getItem("anon_id");
-                          
-                            const form = document.getElementById("msgForm");
-                            form.addEventListener("submit", async (e) => {
-                              e.preventDefault();
-                              const nick = document.getElementById("nick").value || "Anonymous";
-                              const msg = document.getElementById("msg").value.trim();
-                              if (!msg) return;
-                              await addDoc(colRef, { nick, msg, time: Date.now(), sender: anonId });
-                              form.reset();
-                            });
-                          
-                            // Container pesan = test-row di testimonials
-                            const messagesDiv = document.querySelector("#testimonials .test-row");
-                          
-                            const q = query(colRef, orderBy("time", "desc"));
-                            onSnapshot(q, (snapshot) => {
-                              messagesDiv.innerHTML = ""; // reset container
-                              snapshot.forEach((docSnap) => {
-                                const d = docSnap.data();
-                                const div = document.createElement("div");
-                                div.className = "test-item relative"; // style testimonial
-                          
-                                const canDelete = d.sender === anonId;
-                                div.innerHTML = `
-                                  <p class="text">${d.msg}</p>
-                                  <div class="test-item-info">
-                                    <img src="images/default-avatar.jpeg" alt="anon" />
-                                    <div>
-                                      <h3>${d.nick}</h3>
-                                      <p class="text">${new Date(d.time).toLocaleString("en-GB", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "2-digit",
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false
-}).replace(",", "")}</p>
-                                    </div>
-                                  </div>
-                                  ${canDelete ? `<button data-id="${docSnap.id}" class="delete bg-red-500 text-white px-2 py-1 rounded text-sm absolute right-2 top-2">x</button>` : ""}
-                                `;
-                          
-                                messagesDiv.appendChild(div);
-                              });
-                          
-                              document.querySelectorAll(".delete").forEach((btn) => {
-                                btn.addEventListener("click", async () => {
-                                  const id = btn.getAttribute("data-id");
-                                  await deleteDoc(doc(db, "messages", id));
-                                });
-                              });
-                            });
-                          </script>
-                          
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end of services section -->
-
-        <!-- testimonials section -->
-        <section id = "testimonials" class = "py-4">
-            <div class = "container">
-                <div class = "title-wrap">
-                    <span class = "sm-title">merry christmas, happy holiday & happy new year everyone!</span>
-                    <h2 class = "lg-title">wall of letters</h2>
-                </div>
-
-                <div class = "test-row">
-                    <div class = "test-item">
-                        <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda blanditiis, asperiores, velit iste eos officiis tempora magni quaerat quo consectetur expedita cum recusandae facere nam voluptate minus iusto eum. Delectus!</p>
-                        <div class = "test-item-info">
-                            <img src = "images/test-1.jpg" alt = "testimonial">
-                            <div>
-                                <h3>Kevin Wilson</h3>
-                                <p class = "text">Trip to Brazil</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "test-item">
-                        <p class = "text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed ut dolores tenetur harum deserunt. Maxime tenetur consectetur recusandae nobis fugit iusto natus quibusdam nulla!</p>
-                        <div class = "test-item-info">
-                            <img src = "images/test-2.jpg" alt = "testimonial">
-                            <div>
-                                <h3>Ben Davis</h3>
-                                <p class = "text">Trip to Maldives</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = "test-item">
-                        <p class = "text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem sapiente amet expedita quae autem deleniti quo magni numquam facilis soluta dicta, praesentium ipsum, quos optio sed quibusdam! Reprehenderit recusandae provident id nemo!</p>
-                        <div class = "test-item-info">
-                            <img src = "images/test-3.jpg" alt = "testimonial">
-                            <div>
-                                <h3>Jaura Jones</h3>
-                                <p class = "text">Trip to Thailand</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end of testimonials section -->
-
-        <!-- video section -->
-        <section id = "video">
-            <div class = "video-wrapper flex">
-                <video autoplay muted loop playsinline>
-                    <source src = "videos/end.mp4" type = "video/mp4">
-                </video>
-                <!--
-                <button type = "button" id = "play-btn">
-                    <i class = "fas fa-play"></i>
-                </button>
-            -->
-            </div>
-        </section>
-        <!-- end of video section -->
-
-        <!-- footer -->
-        <footer class = "py-4">
-            <div class = "container footer-row">
-                <div class = "footer-item">
-                    <a href = "index.html" class = "site-brand">
-                        Noelle<span>Liebe</span>
-                    </a>
-                    
-                    <p class = "text">Shares the beauty of moments</p> 
-                </div>
-
-                <div class = "footer-item">
-                    <h2>Follow me on: </h2>
-                    <ul class = "social-links">
-                        <li>
-                            <a href = "https://instagram.com/os4iko">
-                                <i class = "fab fa-instagram"></i>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href = "https://youtube.com/channel/UCtAJNvBLdivdaScjzFtf9Zw?sub_confirmation=1">
-                                <i class = "fab fa-youtube"></i>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href = "https://ko-fi.com/shanatta9">
-                                <i class = "fas fa-gift"></i>
-                            </a>
-                        </li>
-
-
-        
-                    </ul>
-                </div>
-
-                <div class = "footer-item">
-                    <h2>Weekly Trending</h2>
-                    <ul>
-                        <li><a href = "https://imdb.com/title/tt5133572/">Crown For Christmas</a></li>
-                        <li><a href = "https://spirithalloween.com/content.jsp?pageName=spiritchristmas">Spirit Christmas Locations</a></li>
-                        <li><a href = "https://goodhousekeeping.com/uk/food/a69091039/costa-christmas-drinks-menu/">Costa Christmas Menu 2025</a></li>
-                        <li><a href = "https://festive.co.uk/catalogues/">Festive Christmas Shop</a></li>
-                        <li><a href = "https://amazon.com/harry-potter-christmas-village/s?k=harry+potter+christmas+village">Harry Potter Christmas Village</a></li>
-                    </ul>
-                </div>
-
-                <div class="subscribe-form footer-item">
-                    <h2>Subscribe for the Update!</h2>
-                    <button id="subscribeBtn" class="btn">Subscribe</button>
-                  </div>
-                  
-                  
-
-                  
-                        
-                  </div>
-                  
-                    
-                  
-                    
-        </footer>
-        <!-- end of footer -->
-
-        <!-- js -->
-        <script src = "js/script.js"></script>
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.js" async></script>
         <script>
-            // play/pause video
-            let video = document.querySelector('.video-wrapper video');
-            document.getElementById('play-btn').addEventListener('click', () => {
-                if(video.paused){
-                    video.play();
-                } else {
-                    video.pause();
-                }
+        document.addEventListener("DOMContentLoaded", () => {
+            const OneSignal = window.OneSignal || [];
+            OneSignal.push(function() {
+                OneSignal.init({
+                    appId: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+                    allowLocalhostAsSecureOrigin: true,
+                    notifyButton: { enable: false } // tombol subscribe mati
+                });
+                // auto prompt 3 detik
+                setTimeout(() => {
+                    OneSignal.isPushNotificationsEnabled().then(enabled => {
+                        if (!enabled) OneSignal.showSlidedownPrompt();
+                    });
+                }, 3000);
+                // trigger welcome notification via REST API setelah subscribe
+                OneSignal.on('subscriptionChange', async function(isSubscribed) {
+                    if (isSubscribed) {
+                        const userId = await OneSignal.getUserId();
+                        fetch('https://onesignal.com/api/v1/notifications', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8',
+                                'Authorization': 'os_v2_app_2wqr7ey6vnctbcqxrhvvyhhvs7pidd3x3siufl4ccs7o43hoicjg4fwbgeauac54x6uvhifx6w2ksd5ybgzstztbprui6iwdedmguza'
+                            },
+                            body: JSON.stringify({
+                                app_id: "d5a11f93-1eab-4530-8a17-89eb5c1cf597",
+                                include_external_user_ids: [userId],
+                                headings: { "en": "NoelleLiebe" },
+                                contents: { "en": "🎄 Welcome to NoelleLiebe! You'll get warm updates from time to time." },
+                                url: "https://noelleliebe.vercel.app"
+                            })
+                        });
+                    }
+                });
             });
-        </script>
-    </body>
-</html> 
+            });
+            </script>
+            </head>
+            
+            <body>
+                <!-- navbar  -->
+                <nav class = "navbar">
+                    <div class = "container flex">
+                        <a href = "#" class = "site-brand" style="pointer-events:none; cursor:default;">
+                            Noelle<span>Liebe</span>
+                        </a>
+                        <button type = "button" id = "navbar-show-btn" class = "flex">
+                            <i class = "fas fa-bars"></i>
+                        </button>
+                        <div id = "navbar-collapse">
+                            <button type = "button" id = "navbar-close-btn" class = "flex">
+                                <i class = "fas fa-times"></i>
+                            </button>
+                            <ul class = "navbar-nav">
+                                <li class = "nav-item">
+                                    <a href = "index.html" class = "nav-link">Home</a>
+                                </li>
+                                <li class = "nav-item">
+                                    <a href = "playlist.html" class = "nav-link">Playlist</a>
+                                </li>
+                                <li class = "nav-item">
+                                    <a href = "gallery.html" class = "nav-link">Gallery</a>
+                                </li>
+                                <li class = "nav-item">
+                                    <a href = "blog.html" class = "nav-link">Blog</a>
+                                </li>
+                                <li class = "nav-item">
+                                    <a href = "about.html" class = "nav-link">About</a>
+                                </li>
+                                <li class = "nav-item">
+                                    <a href = "contact.html" class = "nav-link">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- end of navbar  -->
+                
+                <!-- header -->
+                <header class = "flex">
+                    <div class = "container">
+                        <div class = "header-title">
+                            <h1>Heart of December</h1>
+                            <p>Have yourself a merry little Christmas ~</p>
+                        </div>
+
+                        <div class = "header-form">
+                            <div id="count"></div>
+                            <script>
+                            const count = document.getElementById("count");
+                            function updateCountdown() {
+                                const now = new Date();
+                                const year = now.getFullYear();
+                                const christmas = new Date(year, 11, 25); // 25 Desember
+                                const end = new Date(year + 1, 0, 5, 23, 59, 59); // 5 Januari (tahun berikutnya)
+                                // kalau udah di antara 25 Des dan 5 Jan → "It's Christmas time!"
+                                if (now >= christmas && now <= end) {
+                                    count.textContent = "It's Christmas time! 🎄";
+                                    return;
+                                }
+                                // kalau udah lewat 5 Jan → hitung ke Natal tahun berikutnya
+                                if (now > end) {
+                                    christmas.setFullYear(year + 1);
+                                }
+                                let diff = christmas - now;
+                                const d = Math.floor(diff / 864e5);
+                                const h = Math.floor(diff / 36e5) % 24;
+                                const m = Math.floor(diff / 6e4) % 60;
+                                const s = Math.floor(diff / 1e3) % 60;
+                                count.textContent = `${d} days, ${h} hours, ${m} minutes, ${s} seconds till Christmas`;
+                            }
+                            updateCountdown();
+                            setInterval(updateCountdown, 1000);
+                            </script>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- end of header -->
+                    
+                    <!-- featured section -->
+                    <section id = "featured" class = "py-4">
+                        <div class = "container">
+                            <div class = "title-wrap">
+                                <span class = "sm-title">feel the magic before christmas</span>
+                                <h2 class = "lg-title">holiday favorites</h2>
+                            </div>
+                            <div class = "featured-row">
+                                <div class = "featured-item my-2 shadow" onclick="window.location.href='playlist.html'" style="cursor: pointer;">
+                                    <img src = "images/playlist.jpg" alt = "featured place">
+                                    <div class = "featured-item-content">
+                                        <span>
+                                            <i class = "fas fa-headphones"></i>Playlist</span>
+                                            <div>
+                                                <p class = "text">My daily Spotify jams that bring the cozy, chilly Christmas vibes</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class = "featured-item my-2 shadow">
+                                        <img src = "images/movies.jpg" alt = "featured place">
+                                        <div class = "featured-item-content">
+                                            <span>
+                                                <i class="fas fa-film"></i>Movies</span>
+                                            <div>
+                                                <p class = "text">A nostalgic collection of my favorite films and cartoons</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class = "featured-item my-2 shadow">
+                                        <img src = "images/net.jpg" alt = "featured place">
+                                        <div class = "featured-item-content">
+                                            <span>
+                                                <i class = "fas fa-photo-video"></i>Net Collections</span>
+                                                <div>
+                                                    <p class = "text">Pretty photos and videos I found online</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class = "featured-item my-2 shadow">
+                                            <img src = "images/scenes.jpg" alt = "featured place">
+                                            <div class = "featured-item-content">
+                                                <span>
+                                                    <i class = "fas fa-star"></i>Scenes</span>
+                                                    <div>
+                                                        <p class = "text">Screenshots of magical movie moments</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class = "featured-item my-2 shadow">
+                                                <img src = "images/captures.jpg" alt = "featured place">
+                                                <div class = "featured-item-content">
+                                                    <span>
+                                                        <i class = "fas fa-camera-retro"></i>My Captures</span>
+                                                        <div>
+                                                            <p class = "text">Snaps I took while exploring Christmas stores</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class = "featured-item my-2 shadow">
+                                                    <img src = "images/decor.jpg" alt = "featured place">
+                                                    <div class = "featured-item-content">
+                                                        <span>
+                                                            <i class = "fas fa-shopping-cart"></i>Decor Ideas</span>
+                                                            <div>
+                                                                <p class = "text">Wishlist, inspiration for gifts and festive decor</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- end of featured section -->
+                                        
+                                        <!-- services section -->
+                                        <section id = "services" class = "py-4">
+                                            <div class = "container">
+                                                <div class = "title-wrap">
+                                                    <span class = "sm-title">a little space to share your thoughts</span>
+                                                    <!-- <h2 class = "lg-title">Our services</h2> -->
+                                                </div>
+                                                <div class = "services-row">
+                                                    <div class = "services-item">
+                                                        <span class = "services-icon">
+                                                            <i class="far fa-envelope"></i>
+                                                        </span>
+                                                        <h3>Anonym Letters</h3>
+                                                        <p class = "text">Hii, you did great this year fr! If there's something little rant, your wishlist, your hopes for next year, or just random thoughts you kept to urself. You can drop it here > <</p>
+                                                        
+                                                        <div id="wall" class="space-y-4 mb-6">
+                                                            <form id="msgForm">
+                                                                <label for="nick" class="label">Nickname (optional)</label>
+                                                                <input type="text" id="nick" placeholder="Nickname" class="input-box" style="color:#111; background-color:white;">
+                                                                <label for="msg" class="label">Message</label>
+                                                                <textarea id="msg" placeholder="Your message..." class="input-box" required style="color:#111; background-color:white;"></textarea>
+                                                                <button type="submit" class="btn" style="color: #531616; background-color: white;">Send Letters</button>
+
+                                                            </form>
+                                                        </div>
+                                                        
+                                                        <script type="module">
+                                                        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+                                                        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+                                                        // Config Firebase
+                                                        const firebaseConfig = {
+                                                            apiKey: "AIzaSyA3-LSOtMaB9GjOjYVHwIMRY0_yFy1oLY8",
+                                                            authDomain: "noelleliebe.firebaseapp.com",
+                                                            projectId: "noelleliebe",
+                                                            storageBucket: "noelleliebe.firebasestorage.app",
+                                                            messagingSenderId: "1036040325787",
+                                                            appId: "1:1036040325787:web:03ab4366bef27bd607d43e"
+                                                        };
+                                                        const app = initializeApp(firebaseConfig);
+                                                        const db = getFirestore(app);
+                                                        const colRef = collection(db, "messages");
+                                                        if (!localStorage.getItem("anon_id")) {
+                                                            localStorage.setItem("anon_id", crypto.randomUUID());
+                                                        }
+                                                        const anonId = localStorage.getItem("anon_id");
+                                                        const form = document.getElementById("msgForm");
+                                                        form.addEventListener("submit", async (e) => {
+                                                            e.preventDefault();
+                                                            const nick = document.getElementById("nick").value || "Anonymous";
+                                                            const msg = document.getElementById("msg").value.trim();
+                                                            if (!msg) return;
+                                                            await addDoc(colRef, { nick, msg, time: Date.now(), sender: anonId });
+                                                            form.reset();
+                                                        });
+                                                        
+                                                        // Container pesan = test-row 
+                                                        const messagesDiv = document.querySelector("#testimonials .test-row");
+                                                        const q = query(colRef, orderBy("time", "desc"));
+                                                        onSnapshot(q, (snapshot) => {
+                                                            messagesDiv.innerHTML = ""; // reset container
+                                                            snapshot.forEach((docSnap) => {
+                                                                const d = docSnap.data();
+                                                                const div = document.createElement("div");
+                                                                div.className = "test-item relative"; // style testimonial
+                                                                const canDelete = d.sender === anonId;
+                                                                div.innerHTML = `
+                                                                <p class="text">${d.msg}</p>
+                                                                <div class="test-item-info">
+                                                                    <img src="images/default-avatar.jpeg" alt="anon" />
+                                                                    <div>
+                                                                        <h3>${d.nick}</h3>
+                                                                        <p class="text">${new Date(d.time).toLocaleString("en-GB", {
+                                                                            day: "2-digit",
+                                                                            month: "2-digit",
+                                                                            year: "2-digit",
+                                                                            hour: "2-digit",
+                                                                            minute: "2-digit",
+                                                                            hour12: false
+                                                                        }).replace(",", "")}</p>
+                                                                        </div>
+                                                                        </div>
+                                                                        ${canDelete ? `<button data-id="${docSnap.id}" class="delete bg-red-500 text-white px-2 py-1 rounded text-sm absolute right-2 top-2">x</button>` : ""}`;
+                                                                        messagesDiv.appendChild(div);
+                                                                    });
+                                                                    document.querySelectorAll(".delete").forEach((btn) => {
+                                                                        btn.addEventListener("click", async () => {
+                                                                            const id = btn.getAttribute("data-id");
+                                                                            await deleteDoc(doc(db, "messages", id));
+                                                                        });
+                                                                    });
+                                                                });
+                                                                </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <!-- end of services section -->
+                                                    
+                                                    <!-- letters section -->
+                                                    <section id = "testimonials" class = "py-4">
+                                                        <div class = "container">
+                                                            <div class = "title-wrap">
+                                                                <span class = "sm-title">merry christmas, happy holiday & happy new year everyone!</span>
+                                                                <h2 class = "lg-title">wall of letters</h2>
+                                                            </div>
+                                                            
+                                                            <div class = "test-row">
+                                                                <div class = "test-item">
+                                                                    <p class = "text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda blanditiis, asperiores, velit iste eos officiis tempora magni quaerat quo consectetur expedita cum recusandae facere nam voluptate minus iusto eum. Delectus!</p>
+                                                                    <div class = "test-item-info">
+                                                                        <img src = "images/test-1.jpg" alt = "testimonial">
+                                                                        <div>
+                                                                            <h3>Kevin Wilson</h3>
+                                                                            <p class = "text">Trip to Brazil</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class = "test-item">
+                                                                    <p class = "text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed ut dolores tenetur harum deserunt. Maxime tenetur consectetur recusandae nobis fugit iusto natus quibusdam nulla!</p>
+                                                                    <div class = "test-item-info">
+                                                                        <img src = "images/test-2.jpg" alt = "testimonial">
+                                                                        <div>
+                                                                            <h3>Ben Davis</h3>
+                                                                            <p class = "text">Trip to Maldives</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class = "test-item">
+                                                                    <p class = "text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem sapiente amet expedita quae autem deleniti quo magni numquam facilis soluta dicta, praesentium ipsum, quos optio sed quibusdam! Reprehenderit recusandae provident id nemo!</p>
+                                                                    <div class = "test-item-info">
+                                                                        <img src = "images/test-3.jpg" alt = "testimonial">
+                                                                        <div>
+                                                                            <h3>Jaura Jones</h3>
+                                                                            <p class = "text">Trip to Thailand</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <!-- end of letters section -->
+                                                    
+                                                    <!-- video section -->
+                                                    <section id = "video">
+                                                        <div class = "video-wrapper flex">
+                                                            <video autoplay muted loop playsinline>
+                                                                <source src = "videos/end.mp4" type = "video/mp4">
+                                                            </video>
+                                                            
+                                                            <!--
+                                                                <button type = "button" id = "play-btn">
+                                                                    <i class = "fas fa-play"></i>
+                                                                </button>
+                                                            -->
+                                                        </div>
+                                                    </section>
+                                                    <!-- end of video section -->
+                                                    
+                                                    <!-- footer -->
+                                                    <footer class = "py-4">
+                                                        <div class = "container footer-row">
+                                                            <div class = "footer-item">
+                                                                <a href = "index.html" class = "site-brand">
+                                                                    Noelle<span>Liebe</span>
+                                                                </a>
+                                                                <p class = "text">Shares the beauty of moments</p> 
+                                                            </div>
+                                                            
+                                                            <div class = "footer-item">
+                                                                <h2>Follow me on: </h2>
+                                                                <ul class = "social-links">
+                                                                    <li>
+                                                                        <a href = "https://instagram.com/os4iko">
+                                                                            <i class = "fab fa-instagram"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    
+                                                                    <li>
+                                                                        <a href = "https://youtube.com/channel/UCtAJNvBLdivdaScjzFtf9Zw?sub_confirmation=1">
+                                                                            <i class = "fab fa-youtube"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    
+                                                                    <li>
+                                                                        <a href = "https://ko-fi.com/shanatta9">
+                                                                            <i class = "fas fa-gift"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            
+                                                            <div class = "footer-item">
+                                                                <h2>Weekly Trending:</h2>
+                                                                <ul>
+                                                                    <li><a href = "https://imdb.com/title/tt5133572/">Crown For Christmas</a></li>
+                                                                    <li><a href = "https://spirithalloween.com/content.jsp?pageName=spiritchristmas">Spirit Christmas Locations</a></li>
+                                                                    <li><a href = "https://goodhousekeeping.com/uk/food/a69091039/costa-christmas-drinks-menu/">Costa Christmas Menu 2025</a></li>
+                                                                    <li><a href = "https://festive.co.uk/catalogues/">Festive Christmas Shop</a></li>
+                                                                    <li><a href = "https://amazon.com/harry-potter-christmas-village/s?k=harry+potter+christmas+village">Harry Potter Christmas Village</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            
+                                                            <div class="subscribe-form footer-item">
+                                                                <h2>Subscribe for the Update!</h2>
+                                                                <button id="subscribeBtn" class="btn">Subscribe</button>
+                                                            </div>
+                                                        </div>
+                                                    </footer>
+                                                    <!-- end of footer -->
+                                                    
+                                                    <!-- js -->
+                                                    <script src = "js/script.js"></script>
+                                                    <script>
+                                                    // play/pause video
+                                                    let video = document.querySelector('.video-wrapper video');
+                                                    document.getElementById('play-btn').addEventListener('click', () => {
+                                                        if(video.paused){
+                                                            video.play();
+                                                        } else {
+                                                            video.pause();
+                                                        }
+                                                    });
+                                                    </script>
+                                                    </body>
+                                                    </html> 
+                                                    

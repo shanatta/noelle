@@ -172,9 +172,7 @@
     }
     .about-left{
         margin: 0;
-    }
-    .facts-row{
-        grid-template-columns: repeat(4, 1fr);
+    
     }
     .contact-row{
         row-gap: 0;
