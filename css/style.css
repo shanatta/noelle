@@ -848,7 +848,56 @@ header.header-sm{
     max-width: 495px; /* batas lebar biar rapi */
     margin: 0 auto;   /* biar tetap di tengah */
 }
-
+/* decor page */
+.decor-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+  }
+  
+  .decor-card {
+    background-color: #fff;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    text-align: left;
+    transition: var(--trans);
+  }
+  
+  .decor-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .decor-content {
+    padding: 1rem;
+  }
+  
+  .decor-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+  
+  .decor-content .price {
+    font-weight: bold;
+    color: var(--green);
+    margin-bottom: 0.8rem;
+  }
+  
+  .decor-card .btn {
+    width: 80%;
+    display: block;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+  }
+  
+  .decor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .decor-row { margin-bottom: 2rem; }
+  
   
   
   
