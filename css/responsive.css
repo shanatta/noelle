@@ -249,15 +249,17 @@
 
     .spotify-container {
       width: 100% !important;
-      max-width: 450px !important;
+      max-width: 500px !important;
       margin: 0 auto !important;
-      padding: 0 !important;
+      display: block !important;
     }
   
     .spotify-container iframe {
       width: 100% !important;
-      height: 200px !important; /* kamu boleh gedein 220-260 */
-      border-radius: 12px;
+      min-height: 180px !important;   /* WAJIB supaya nggak hilang */
+      height: 180px !important;       /* HP Chrome butuh FIXED HEIGHT */
+      display: block !important;
+      border-radius: 14px !important;
     }
   
   }
