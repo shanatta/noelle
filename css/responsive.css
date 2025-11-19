@@ -220,23 +220,21 @@
 
 @media (max-width: 768px) {
 
-    #video {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-  
     .video-wrapper {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+      flex: none !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      display: block !important;
     }
   
     .video-wrapper video {
       width: 100vw !important;
       height: 100vh !important;
       object-fit: cover !important;
-      display: block;
+      display: block !important;
     }
   
   }
