@@ -1,11 +1,8 @@
-
-
-
 @media screen and (max-width: 460px){
     .featured-item-content{
         -webkit-transform: translateY(68%);
-            -ms-transform: translateY(68%);
-                transform: translateY(68%);
+        -ms-transform: translateY(68%);
+        transform: translateY(68%);
     }
 }
 
@@ -13,20 +10,20 @@
     .test-item::after{
         left: 4rem;
         -webkit-transform: translateX(0);
-            -ms-transform: translateX(0);
-                transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
     }
     .test-item-info{
         left: 1rem;
         -webkit-transform: translateX(0);
-            -ms-transform: translateX(0);
-                transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
         text-align: left;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
     }
 }
 
@@ -47,18 +44,18 @@
     }
     .social-links{
         -webkit-box-pack: start;
-            -ms-flex-pack: start;
-                justify-content: start;
+        -ms-flex-pack: start;
+        justify-content: start;
     }
     .social-links li:nth-child(1){
         margin-left: 0;
     }
     .subscribe-form form{
         -webkit-box-align: start;
-            -ms-flex-align: start;
-                align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
     }
-
+    
     .gallery-row, .popular-row, .blog-row, .facts-row{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -72,10 +69,11 @@
     }
     .facts-row{
         -webkit-column-gap: 5rem;
-           -moz-column-gap: 5rem;
-                column-gap: 5rem;
+        -moz-column-gap: 5rem;
+        column-gap: 5rem;
     }
 }
+
 @media screen and (min-width: 992px){
     .header-title h1{
         font-size: 4rem;
@@ -83,15 +81,16 @@
     .header-form form{
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
         -webkit-box-align: stretch;
-            -ms-flex-align: stretch;
-                align-items: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
     }
     .header-form .form-control, .header-form .btn{
         margin: 0 0.5rem;
     }
+    
     /* navbar */
     #navbar-show-btn{
         display: none;
@@ -100,8 +99,8 @@
         display: block!important;
         background-color: transparent;
         -webkit-transform: translateX(0);
-            -ms-transform: translateX(0);
-                transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
         height: auto;
         padding: 0;
         position: static;
@@ -115,8 +114,8 @@
         display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: end;
-            -ms-flex-pack: end;
-                justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
         margin: 0;
     }
     .nav-item{
@@ -127,13 +126,11 @@
     .navbar-cng .navbar-nav .nav-link{
         color: var(--dark);
     }
-
     .test-row, .about-row, .contact-row{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-
     .popular-row, .blog-row{
         grid-template-columns: repeat(3, 1fr);
     }
@@ -145,9 +142,8 @@
         padding-top: 30%; /* tinggi proporsional */
         border-radius: 12px;
         overflow: hidden;
-      }
-      
-      .spotify-container iframe {
+    }
+    .spotify-container iframe {
         position: absolute;
         top: 0;
         left: 0;
@@ -155,24 +151,22 @@
         height: 100%;
         border: 0;
         border-radius: 12px;
-      }
-      
-      /* buat HP responsive */
-      @media (max-width: 768px) {
+    }
+    /* buat HP responsive */
+    @media (max-width: 768px) {
         .spotify-container {
-          width: 90%; /* hampir full width di HP */
-          padding-top: 70%; /* tinggi proporsional di HP */
+            width: 90%; /* hampir full width di HP */
+            padding-top: 70%; /* tinggi proporsional di HP */
         }
-      }
-      
+    }
+    
     .about-row{
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
     }
     .about-left{
         margin: 0;
-    
     }
     .contact-row{
         row-gap: 0;
@@ -200,8 +194,8 @@
         display: -ms-flexbox;
         display: flex;
         -webkit-box-align: start;
-            -ms-flex-align: start;
-                align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
         text-align: left;
     }
     .contact-item:nth-child(1){
