@@ -219,15 +219,9 @@
 }
 
 @media (max-width: 768px) {
-    .video-wrapper {
-      height: 100vh !important;   /* GANTI tingginya */
-      width: 100vw !important;
-    }
-  
-    .video-wrapper video {
-      height: 100vh !important;
-      width: 100vw !important;
-      object-fit: cover !important;
+    #video {
+      z-index: 999 !important;
+      position: relative !important;
     }
   }
   
