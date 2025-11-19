@@ -220,30 +220,28 @@
 
 @media (max-width: 768px) {
 
-    /* HAPUS flex behavior yang bikin video jadi lonjong */
-    .video-wrapper.flex {
-      display: block !important;
-      height: auto !important;
-    }
-  
     #video {
-      width: 100vw !important;
-      height: 100vh !important;
       padding: 0 !important;
       margin: 0 !important;
     }
   
     .video-wrapper {
+      position: relative !important;
       width: 100vw !important;
-      height: 100vh !important;
+      height: calc(100vw * 0.5625) !important; /* 16:9 RATIO */
       overflow: hidden !important;
+      display: block !important;
     }
   
     .video-wrapper video {
-      width: 100vw !important;
-      height: 100vh !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 100% !important;
+      transform: translate(-50%, -50%) !important;
       object-fit: cover !important;
-      display: block !important;
     }
   
   }
