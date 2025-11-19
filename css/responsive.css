@@ -281,45 +281,28 @@
 }
 @media (max-width: 768px) {
 
-    /* Grid HP: 3 kolom rapi */
-    #decor .decor-row {
-        display: contents !important;
-    }
-
-    #decor .container {
+    /* Hapus sistem row di HP, jadikan satu grid besar */
+    #decor {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 12px !important;
     }
 
-    /* Card biar nggak melebar */
-    .decor-card {
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
+    /* Hapus grid milik anak-anak row */
+    .decor-row {
+        display: contents !important;
     }
 
-    /* GAMBAR SERAGAM (fix height + object-fit) */
+    /* Card tetap rapi */
+    .decor-card {
+        width: 100% !important;
+    }
+
+    /* BIAR GAMBAR GAK GEDE-KCIL */
     .decor-card img {
         width: 100% !important;
-        height: 110px !important;   /* atur biar sama tinggi semua */
-        object-fit: cover !important; /* biar rapi, nggak gepeng */
-    }
-
-    /* tulisan biar nggak panjang banget */
-    .decor-content h3 {
-        font-size: 11px !important;
-        line-height: 1.2;
-        height: 32px; /* biar judul rata */
-        overflow: hidden;
-    }
-
-    .decor-content .price {
-        font-size: 11px !important;
-    }
-
-    .decor-content .btn {
-        padding: 4px 6px !important;
-        font-size: 10px !important;
+        height: 115px !important;
+        object-fit: cover !important;
+        border-radius: 6px;
     }
 }
