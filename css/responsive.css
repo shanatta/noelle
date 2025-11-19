@@ -219,16 +219,32 @@
 }
 
 @media (max-width: 768px) {
+
+    /* Buat ngecilin tinggi hero/pink section */
+    section,
     .home-wrapper,
-    .banner,
     .hero,
-    .home,
-    #home,
+    .banner,
     .intro {
-      min-height: auto !important;
       height: auto !important;
-      padding-bottom: 0 !important;
-      margin-bottom: 0 !important;
+      min-height: auto !important;
+      padding: 20px 0 !important;
+      margin: 0 !important;
     }
+  
+    /* Biar video tetep full */
+    .video-wrapper {
+      height: 100vh !important;
+      width: 100vw !important;
+      overflow: hidden !important;
+    }
+  
+    .video-wrapper video {
+      height: 100vh !important;
+      width: 100vw !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+  
   }
   
