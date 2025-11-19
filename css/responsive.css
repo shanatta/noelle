@@ -279,19 +279,14 @@
         margin-top: 30px !important;
     }
 }
-  /* Tetap untuk PC */
-.decor-item {
-    width: 20%; /* 5 item per baris */
-    float: left;
+.decor-section {
+    display: flex;
+    flex-wrap: wrap;
   }
   
-  /* Responsif HP */
-  @media (max-width: 768px) {
-    .decor-item {
-      width: 20%; /* tetep 5 per baris */
-    }
+  .decor-item {
+    flex: 0 0 20%; /* 5 item per baris */
+    box-sizing: border-box;
+    padding: 5px; /* optional */
   }
-  
-  /* Supaya zoom gak bisa di HP */
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
