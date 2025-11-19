@@ -247,36 +247,35 @@
   }
   @media (max-width: 768px) {
 
-    /* BATALKAN STYLE ABSOLUTE KHUSUS HP */
+    /* pastikan about-row jadi column biar order jalan */
+    .about-row {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* POSISI JUDUL & TEKS */
+    .about-right {
+        order: 1 !important;
+    }
+
+    /* POSISI SPOTIFY DI BAWAH ABOUT-RIGHT */
     .spotify-container {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
+        order: 2 !important;
 
         width: 100% !important;
-        height: auto !important;
-
-        padding: 0 !important;            /* reset hack lama */
-        margin: 30px 0 !important;        /* jarak atas bawah */
-        overflow: visible !important;     /* biar ga ketekep */
+        margin: 25px 0 !important;
+        position: relative !important;
+        padding: 0 !important;
     }
 
     .spotify-container iframe {
-        position: relative !important;    /* ganti dari absolute */
         width: 100% !important;
-        height: 360px !important;         /* biar panjang kayak kamu mau */
-        border-radius: 16px !important;
-        display: block !important;
-    }
-
-    /* JARAK JUDUL & TEKS */
-    .about-right h2 {
-        margin-top: 15px !important;
-        margin-bottom: 15px !important;
+        height: 360px !important;
+        border-radius: 14px !important;
     }
 
     .about-right p {
-        margin-top: 30px !important;
+        margin-top: 20px !important;
     }
 }
   
