@@ -279,11 +279,16 @@
         margin-top: 30px !important;
     }
 }
-@media (max-width: 768px) {
+#decor .container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 item per baris */
+    gap: 8px;
+  }
+  
+  @media (max-width: 600px) {
     #decor .container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr); /* 5 item per baris */
-      gap: 8px;
+      grid-template-columns: repeat(5, 1fr); /* tetap 5 per baris di HP */
+      gap: 4px; /* bisa diperkecil supaya muat layar */
     }
   }
   
