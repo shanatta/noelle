@@ -248,18 +248,21 @@
   @media (max-width: 768px) {
 
     .spotify-container {
-      width: 90% !important;              /* biar gak terlalu lebar */
-      margin: 20px auto !important;       /* BIKIN TENGAH & JARAK DARI TEKS */
+      width: 92% !important;
+      margin: 50px auto !important;   /* NAIK jadi 50px biar lega */
       display: flex !important;
-      justify-content: center !important; /* CENTER HORIZONTAL */
+      justify-content: center !important;
+      align-items: center !important;
+      padding-top: 10px !important;   /* sedikit bantalan */
+      padding-bottom: 25px !important;
     }
   
     .spotify-container iframe {
       width: 100% !important;
-      height: 220px !important;           /* LEBIH PANJANG */
-      min-height: 220px !important;       /* NGAJAR BUG HP */
-      display: block !important;
+      height: 260px !important;
+      min-height: 260px !important;
       border-radius: 14px !important;
+      display: block !important;
     }
   
   }
