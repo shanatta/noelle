@@ -248,22 +248,23 @@
   @media (max-width: 768px) {
 
     .spotify-container {
-      width: 92% !important;
-      margin: 50px auto !important;   /* NAIK jadi 50px biar lega */
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      padding-top: 10px !important;   /* sedikit bantalan */
-      padding-bottom: 25px !important;
+        width: 90% !important;      /* biar gak kepotong */
+        margin: 25px auto !important; 
+        display: block !important;
+        position: relative !important;
     }
-  
+
     .spotify-container iframe {
-      width: 100% !important;
-      height: 260px !important;
-      min-height: 260px !important;
-      border-radius: 14px !important;
-      display: block !important;
+        width: 100% !important;
+        height: 330px !important;    /* panjang sesuai request */
+        border-radius: 14px !important;
     }
+
+    /* kasih jarak dari judul & deskripsi */
+    #about .header-title p,
+    #about .lg-title,
+    #about .sm-title {
+        margin-bottom: 20px !important;
+    }
+}
   
-  }
-    
