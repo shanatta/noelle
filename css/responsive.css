@@ -279,18 +279,18 @@
         margin-top: 30px !important;
     }
 }
-  /* ====== DECOR FIX 5 KOLOM SELALU ====== */
+  /* ====== DECOR FIX PC ====== */
 .decor-row {
     display: grid !important;
     grid-template-columns: repeat(5, 1fr) !important;
     gap: 15px !important;
 }
 
-/* khusus HP */
+/* ====== HP: bikin 3 kolom ====== */
 @media (max-width: 768px) {
     .decor-row {
-        grid-template-columns: repeat(5, 1fr) !important;
-        gap: 10px !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
     }
 
     .decor-card img {
@@ -298,14 +298,9 @@
         height: auto !important;
     }
 
-    /* biar card tidak kepanjangan */
-    .decor-card {
-        padding: 0 !important;
-    }
-
     .decor-content h3 {
-        font-size: 0.75rem !important;
-        line-height: 1.1em !important;
+        font-size: 0.8rem !important;
+        line-height: 1.15em !important;
     }
 
     .decor-content .price {
