@@ -220,30 +220,30 @@
 
 @media (max-width: 768px) {
 
-    /* Buat ngecilin tinggi hero/pink section */
-    section,
-    .home-wrapper,
-    .hero,
+    /* BATASIN TINGGI HERO / PINK BANNER */
     .banner,
-    .intro {
+    .hero,
+    .home,
+    .home-wrapper,
+    #home {
       height: auto !important;
-      min-height: auto !important;
-      padding: 20px 0 !important;
-      margin: 0 !important;
+      min-height: unset !important;
+      padding: 0 !important;
     }
   
-    /* Biar video tetep full */
-    .video-wrapper {
-      height: 100vh !important;
-      width: 100vw !important;
-      overflow: hidden !important;
+    /* GAMBAR / ILUSTRASI DALAM HERO */
+    .banner img,
+    .hero img {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
     }
   
-    .video-wrapper video {
-      height: 100vh !important;
-      width: 100vw !important;
-      object-fit: cover !important;
-      display: block !important;
+    /* TEKS MERRY AND BRIGHT */
+    .banner h1,
+    .hero h1 {
+      font-size: 2rem !important;
+      line-height: 1.2 !important;
     }
   
   }
