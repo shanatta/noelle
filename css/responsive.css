@@ -219,9 +219,16 @@
 }
 
 @media (max-width: 768px) {
-    #video {
-      z-index: 999 !important;
-      position: relative !important;
+    .home-wrapper,
+    .banner,
+    .hero,
+    .home,
+    #home,
+    .intro {
+      min-height: auto !important;
+      height: auto !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
     }
   }
   
