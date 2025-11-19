@@ -279,16 +279,19 @@
         margin-top: 30px !important;
     }
 }
-#decor .container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 item per baris */
-    gap: 8px;
+  /* Tetap untuk PC */
+.decor-item {
+    width: 20%; /* 5 item per baris */
+    float: left;
   }
   
-  @media (max-width: 600px) {
-    #decor .container {
-      grid-template-columns: repeat(5, 1fr); /* tetap 5 per baris di HP */
-      gap: 4px; /* bisa diperkecil supaya muat layar */
+  /* Responsif HP */
+  @media (max-width: 768px) {
+    .decor-item {
+      width: 20%; /* tetep 5 per baris */
     }
   }
+  
+  /* Supaya zoom gak bisa di HP */
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
