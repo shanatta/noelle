@@ -279,14 +279,13 @@
         margin-top: 30px !important;
     }
 }
-.decor-section {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .decor-item {
-    flex: 0 0 20%; /* 5 item per baris */
-    box-sizing: border-box;
-    padding: 5px; /* optional */
-  }
-  
+  /* Paksa semua layar tetap 5 per baris */
+@media only screen and (max-width: 1200px),
+only screen and (max-width: 992px),
+only screen and (max-width: 768px),
+only screen and (max-width: 576px) {
+.decor-item {
+flex: 0 0 20% !important;
+max-width: 20% !important;
+}
+}
