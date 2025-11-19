@@ -248,16 +248,16 @@
   @media (max-width: 768px) {
 
     .spotify-container {
-      width: 100% !important;
-      max-width: 500px !important;
-      margin: 0 auto !important;
-      display: block !important;
+      width: 90% !important;              /* biar gak terlalu lebar */
+      margin: 20px auto !important;       /* BIKIN TENGAH & JARAK DARI TEKS */
+      display: flex !important;
+      justify-content: center !important; /* CENTER HORIZONTAL */
     }
   
     .spotify-container iframe {
       width: 100% !important;
-      min-height: 180px !important;   /* WAJIB supaya nggak hilang */
-      height: 180px !important;       /* HP Chrome butuh FIXED HEIGHT */
+      height: 220px !important;           /* LEBIH PANJANG */
+      min-height: 220px !important;       /* NGAJAR BUG HP */
       display: block !important;
       border-radius: 14px !important;
     }
