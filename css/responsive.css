@@ -279,30 +279,35 @@
         margin-top: 30px !important;
     }
 }
+  /* ====== HP: tiap row jadi 3 kolom ====== */
 @media (max-width: 768px) {
 
-    /* Hapus sistem row di HP, jadikan satu grid besar */
-    #decor {
+    .decor-row {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 12px !important;
     }
 
-    /* Hapus grid milik anak-anak row */
-    .decor-row {
-        display: contents !important;
-    }
-
-    /* Card tetap rapi */
     .decor-card {
         width: 100% !important;
     }
 
-    /* BIAR GAMBAR GAK GEDE-KCIL */
     .decor-card img {
         width: 100% !important;
-        height: 115px !important;
+        height: auto !important;
         object-fit: cover !important;
-        border-radius: 6px;
+    }
+
+    .decor-content h3 {
+        font-size: 0.8rem !important;
+    }
+
+    .decor-content .price {
+        font-size: 0.75rem !important;
+    }
+
+    .decor-card .btn {
+        font-size: 0.7rem !important;
+        padding: 4px 6px !important;
     }
 }
