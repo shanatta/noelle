@@ -279,36 +279,27 @@
         margin-top: 30px !important;
     }
 }
-  /* ====== DECOR FIX PC ====== */
-.decor-row {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 15px !important;
-}
-
-/* ====== HP: bikin 3 kolom ====== */
 @media (max-width: 768px) {
-    .decor-row {
+
+    /* HP: bikin semua row jadi grid global yang rapi 3 kolom */
+    #decor .decor-row {
+        display: contents !important;
+    }
+
+    #decor .decor-card {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    #decor .container {
+        display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 12px !important;
     }
 
+    /* biar gambar & teks tetap rapi */
     .decor-card img {
         width: 100% !important;
         height: auto !important;
-    }
-
-    .decor-content h3 {
-        font-size: 0.8rem !important;
-        line-height: 1.15em !important;
-    }
-
-    .decor-content .price {
-        font-size: 0.75rem !important;
-    }
-
-    .decor-card .btn {
-        font-size: 0.7rem !important;
-        padding: 4px 6px !important;
     }
 }
