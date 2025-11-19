@@ -246,25 +246,30 @@
   
   }
   @media (max-width: 768px) {
-
+    /* BIKIN SPOTIFY TURUN KE BAWAH */
     .spotify-container {
-        width: 90% !important;      /* biar gak kepotong */
-        margin: 25px auto !important; 
-        display: block !important;
         position: relative !important;
+        margin-top: 40px !important;   /* jarak dari ABOUT TITLE */
+        margin-bottom: 30px !important; /* jarak sebelum deskripsi */
+        width: 100% !important;
     }
 
     .spotify-container iframe {
         width: 100% !important;
-        height: 330px !important;    /* panjang sesuai request */
+        height: 340px !important;
         border-radius: 14px !important;
     }
 
-    /* kasih jarak dari judul & deskripsi */
-    #about .header-title p,
-    #about .lg-title,
-    #about .sm-title {
+    /* BIKIN JUDUL "DECEMBER PLAYLIST" TURUN LEBIH ATAS */
+    .about-right h2 {
+        margin-top: 20px !important;
         margin-bottom: 20px !important;
+        display: block !important;
+    }
+
+    /* BIKIN DESKRIPSI NGALAH & TURUN */
+    .about-right p {
+        margin-top: 20px !important;
     }
 }
   
