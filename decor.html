@@ -2,48 +2,19 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
         <style>
-          /* Section dekorasi tetap flex */
           .decor-section {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            justify-content: flex-start !important;
-          }
-        
-          /* Semua item 20% per baris, override semua media query */
-          .decor-item {
-            flex: 0 0 20% !important;
-            max-width: 20% !important;
-            box-sizing: border-box !important;
-            padding: 5px !important;
-          }
-        
-          /* Mobile override */
-          @media (max-width: 768px) {
-            .decor-section {
-              display: flex !important;
-              flex-wrap: wrap !important;
-            }
-            .decor-item {
-              flex: 0 0 20% !important;
-              max-width: 20% !important;
-            }
-          }
-        
-          /* Lock zoom dan scroll horizontal */
-          html, body {
-            width: 100% !important;
-            overflow-x: hidden !important;
-            -webkit-text-size-adjust: 100% !important;
-            -ms-text-size-adjust: 100% !important;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-          }
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.decor-item {
+  flex: 0 0 20%; /* 5 item per baris */
+  box-sizing: border-box;
+  padding: 5px; /* optional */
+}
+
         </style>
         <title>NoelleLiebe</title>
         <!-- font awesome cdn -->
