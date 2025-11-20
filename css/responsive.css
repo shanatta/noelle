@@ -279,7 +279,6 @@
         margin-top: 30px !important;
     }
 }
-  /* ====== HP: tiap row jadi 3 kolom ====== */
 @media (max-width: 768px) {
 
     .decor-row {
@@ -288,26 +287,20 @@
         gap: 12px !important;
     }
 
+    /* KUNCI PENTING BIAR GAK 3+2 */
     .decor-card {
-        width: 100% !important;
+        min-height: 210px !important; 
+        display: flex !important;
+        flex-direction: column !important;
     }
 
     .decor-card img {
         width: 100% !important;
-        height: auto !important;
+        height: 120px !important;
         object-fit: cover !important;
     }
 
-    .decor-content h3 {
-        font-size: 0.8rem !important;
-    }
-
-    .decor-content .price {
-        font-size: 0.75rem !important;
-    }
-
-    .decor-card .btn {
-        font-size: 0.7rem !important;
-        padding: 4px 6px !important;
+    .decor-content {
+        flex-grow: 1 !important;
     }
 }
