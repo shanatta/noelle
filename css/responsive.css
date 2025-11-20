@@ -279,21 +279,4 @@
         margin-top: 30px !important;
     }
 }
-@media (max-width: 768px) {
-
-    .decor-row {
-        display: contents !important;
-    }
-
-    #decor {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 12px !important;
-    }
-
-    .decor-card img {
-        width: 100% !important;
-        height: 120px !important;
-        object-fit: cover !important;
-    }
-}
+  
