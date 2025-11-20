@@ -282,25 +282,18 @@
 @media (max-width: 768px) {
 
     .decor-row {
+        display: contents !important;
+    }
+
+    #decor {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 12px !important;
-    }
-
-    /* KUNCI PENTING BIAR GAK 3+2 */
-    .decor-card {
-        min-height: 210px !important; 
-        display: flex !important;
-        flex-direction: column !important;
     }
 
     .decor-card img {
         width: 100% !important;
         height: 120px !important;
         object-fit: cover !important;
-    }
-
-    .decor-content {
-        flex-grow: 1 !important;
     }
 }
