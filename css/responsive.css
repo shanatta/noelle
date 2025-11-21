@@ -279,4 +279,31 @@
         margin-top: 30px !important;
     }
 } 
+/* ==== FIX LIGHTBOX VIDEO DI HP SAJA ==== */
+@media (max-width: 768px) {
+
+    /* tombol next & prev selalu di atas */
+    .lightbox .prev,
+    .lightbox .next {
+        z-index: 99999 !important;
+        opacity: 1 !important;
+        display: block !important;
+        pointer-events: auto !important;
+    }
+
+    /* video supaya TIDAK menutupi tombol */
+    .lightbox video {
+        z-index: 1 !important;
+        position: relative !important;
+        pointer-events: none !important; 
+        /* biar tombol bisa diklik, videonya tetap jalan normal */
+    }
+
+    /* jika pakai iframe (kadang untuk embed video) */
+    .lightbox iframe {
+        z-index: 1 !important;
+        position: relative !important;
+        pointer-events: none !important;
+    }
+}
   
