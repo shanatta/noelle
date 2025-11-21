@@ -278,14 +278,15 @@
     .about-right p {
         margin-top: 30px !important;
     }
-} 
+}
+
 /* ============ FIX VIDEO MODAL BUTTONS (MOBILE ONLY) ============ */
 @media (max-width: 768px) {
     #img-modal {
         position: relative !important;
         z-index: 9999 !important;
     }
-
+    
     #prev-btn,
     #next-btn,
     #modal-close-btn {
@@ -295,18 +296,18 @@
         display: flex !important;
         pointer-events: auto !important;
     }
-
+    
     /* Video jangan nutup tombol */
     #modal-video {
         position: relative !important;
         z-index: 1 !important;
         pointer-events: none !important;
     }
-
+    
     /* Foto aman, ga diubah */
     #modal-img {
         position: relative !important;
         z-index: 1 !important;
     }
-}
-  
+} 
+ 
